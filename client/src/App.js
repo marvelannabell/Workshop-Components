@@ -6,16 +6,23 @@ import { useEffect, useState } from 'react';
 
 const baseUrl = 'http://localhost:3005/api'
 
-function App() {
+function useRequest(type) {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    fetch(`${baseUrl}/users`)
+    fetch(`${baseUrl}/${type}`)
       .then(response => response.json())
       .then(data => {
         setUsers(data.users)
       })
   }, []);
+
+  return users
+}
+
+function App() {
+  const users = useRequest('users')
+  const products = useRequest('products')
 
   // console.log(users);
   return (
