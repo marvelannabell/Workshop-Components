@@ -22,7 +22,7 @@ function useRequest(type) {
 
 function App() {
   const users = useRequest('users')
-  const products = useRequest('products')
+  // const products = useRequest('products')
 
   // console.log(users);
   return (
